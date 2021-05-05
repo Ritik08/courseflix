@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header bg-warning" (click)="toggle()">
+        <span class="card-title">{{course.name | uppercase}}</span>
+        <i class="fa fa-trash pull-right" (click)="handleDelete(course.id)"></i>
+        <i class="fa fa-edit pull-right"></i>
+        <i class="fa pull-right" [ngClass]="{'fa-minus-circle': expand, 'fa-plus-circle': !expand}"></i>
+    </div>
+    <div class="card-body" [hidden]="!expand">
+        <!--<img src="../../assets/{{course.name|lowercase}}.png" alt="course"> -->
+        <img [src]="course.imgPath" alt="course">
+        <p class="card-text">Price: {{course.price | currency: 'USD': true}}</p>
+        <p class="card-text"># Students: {{course.students}} </p>
+        <p class="card-text">Start Date: {{course.start_date | date:'dd-MMMM-yyyy ZZZ'}} </p>
+        <p class="card-text">Duration: {{course.duration}}</p>
+        <p class="card-text">
+            <app-rating [rating]="course.rating"></app-rating>
+        </p>
+
+        {{course.students}}
+        <button [disabled]="course.students >= 20" class="btn" [ngClass]="{
+                'btn-success': course.students <= 10,
+                'btn-warning': course.students > 10 &&  course.students <= 15,
+                'btn-danger': course.students > 15 &&  course.students <= 50000
+            }" [style.display]="shouldDisplayEnrollButton(course) ? 'none': 'block'" (click)="selectCourse(course.id)" style="display: inline;">Enroll</button>
+
+        <button class="btn btn-warning" style="display: inline;" [routerLink]="['/course', course.id]" [queryParams]="{offer:'true',sort:'asc'}" routerLinkActive="router-link-active">Details</button>
+
+    </div>
+</div>

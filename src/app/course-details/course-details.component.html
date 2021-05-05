@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="row">
+        <p>
+            Course Id: {{course.id}}
+        </p>
+    </div>
+    <div class="row">
+        <p>
+            Description: {{course.name}} {{course | json}}
+        </p>
+    </div>
+    <div class="row">
+        <p>Customers who purchased this course would also like </p>
+        <button class="btn btn-warning" style="display: inline;" [routerLink]="['/course', 2]" routerLinkActive="router-link-active">Details</button>
+    </div>
+</div>

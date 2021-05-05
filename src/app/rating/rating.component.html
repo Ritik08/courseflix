@@ -1,0 +1,6 @@
+<span>Rating: </span>
+<span>
+    <i class="fa fa-star" *ngFor="let i of stars"></i>
+    <i class="fa fa-star-half" *ngIf="isFractionPresent"></i>
+</span>
+<span>{{rating | number:'1.2-2'}}</span>

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "courseflix08-c48f5",
+    "staging": "courseflix08-c48f5"
+  },
+  "targets": {
+    "courseflix08-c48f5": {
+      "hosting": {
+        "course-flix": [
+          "courseflix08-c48f5"
+        ]
+      }
+    }
+  }
+}

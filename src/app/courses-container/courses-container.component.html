@@ -1,0 +1,20 @@
+<div class="container">
+    <button type="button" class="btn pull-right" [ngClass]="{'btn-primary': !collapseAll, 
+                      'btn-danger': collapseAll
+                      }" (click)="toggle()">{{btnText}}</button>
+    <ng-container *ngIf="courses?.length === 0; else varName">
+        <h2>Loading ....</h2>
+    </ng-container>
+    <ng-template #varName>
+        <div>
+            <h2>Number of Courses: {{courses.length}}</h2>
+        </div>
+        <div class="row">
+            <div class="course col-md-4" style="margin-bottom: 10px;" *ngFor="let course of courses">
+                <div>
+                    <app-course [childCompData]="course" (enroll)="courseSelected($event)" (deleteCourse)="handleDelete($event)" [collapse]='collapseAll'> </app-course>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
